@@ -22,6 +22,7 @@ import {
   MatPaginatorModule,
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+//import '@angular/material/prebuilt-themes/';
 
 @NgModule({
   imports: [

@@ -1,0 +1,136 @@
+<mat-dialog-content class="mat-typography">
+    <div class="dialog-body">
+      <form class="example-form" > 
+          <div class="header-form">
+            <h3 mat-dialog-title>Creación de Historia Clínica</h3><label class="required-tip-form">Campos Obligatorios(*).</label>
+          </div>
+          <div class="section-form-container">
+            <h4>Datos Generales</h4>  
+            <br>
+            <div>               
+              <mat-form-field>
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                <input matInput [matDatepicker]="picker" placeholder="Fecha" [formControl]="date">                 
+              </mat-form-field>               
+            </div>    
+            <br>        
+            <br>
+              <mat-form-field style="width: 30%;">
+                <input matInput placeholder="Nombre" value="" autocomplete="disabled" required>
+              </mat-form-field>        
+              <mat-form-field style="width: 15%;">
+                <input matInput placeholder="Apellido Paterno" value="" autocomplete="disabled" required>
+              </mat-form-field> 
+              <mat-form-field style="width: 15%;">
+                <input matInput placeholder="Apellido Materno" value="" autocomplete="disabled" required>
+              </mat-form-field>                
+              <mat-form-field style="width: 7%;">
+                  <input type="number" matInput placeholder="Edad" value="" autocomplete="disabled" required>
+              </mat-form-field> 
+              <mat-form-field style="width: 20%;">
+                  <mat-label>Sexo</mat-label>
+                  <mat-select matNativeControl required>    
+                    <mat-option value="n">N/A</mat-option>                  
+                    <mat-option value="m">Masculino</mat-option>
+                    <mat-option value="f">Femenino</mat-option>
+                  </mat-select>
+              </mat-form-field>  
+              <br>
+              <mat-form-field style="width: 20%;">
+                <input matInput placeholder="Calle" value="" autocomplete="disabled" required>
+              </mat-form-field>  
+              <mat-form-field style="width: 20%;">
+                <input matInput placeholder="Colonia" value="" autocomplete="disabled" required>
+              </mat-form-field>  
+              <mat-form-field style="width: 10%;">
+                <input matInput placeholder="Número" value="" autocomplete="disabled" required>
+              </mat-form-field>  
+              <mat-form-field style="width: 10%;">
+                  <input matInput placeholder="Ciudad" value="" autocomplete="disabled" required>
+              </mat-form-field> 
+              <mat-form-field style="width: 20%;">
+                  <input type="email" matInput placeholder="Correo" value="" autocomplete="disabled" required>
+              </mat-form-field> 
+              <mat-form-field style="width: 20%;">
+                  <input matInput placeholder="Teléfono" value="" autocomplete="disabled" required>
+              </mat-form-field> 
+              <br>
+              <mat-form-field style="width: 60%;">
+                  <input matInput placeholder="Referencia" value="" autocomplete="disabled" required>
+              </mat-form-field> 
+              <mat-form-field style="width: 30%;">
+                  <input matInput placeholder="Ocupación" value="" autocomplete="disabled" required>
+              </mat-form-field> 
+          </div>         
+          <br>
+          <div class="section-form-container">
+              <h4>Contacto de Emergencia</h4> 
+              <mat-form-field style="width: 60%;">
+                  <input matInput placeholder="Nombre" value="" autocomplete="disabled" >
+              </mat-form-field> 
+              <mat-form-field style="width: 30%;">
+                  <input matInput placeholder="Teléfono" value="" autocomplete="disabled" >
+              </mat-form-field>  
+          </div>       
+          <br>
+          <div class="section-form-container">
+            <h4>Antecedentes Personales y Heredofamiliares</h4> 
+            <mat-form-field style="width: 100%;">
+              <textarea matInput placeholder="Enfermedades padecidas por algun miembro de su familia (cancer, problemas cardiacos, padecimientos mentales o algún otro):"></textarea>
+            </mat-form-field> 
+            <mat-form-field style="width: 100%;">
+              <textarea matInput placeholder="Motivo de consulta:" value="" autocomplete="disabled" ></textarea>
+            </mat-form-field>  
+            <mat-form-field style="width: 100%;">
+              <textarea matInput placeholder="Enfermedad padecida:" value="" autocomplete="disabled" ></textarea>
+            </mat-form-field>  
+            <mat-form-field style="width: 100%;">
+              <textarea matInput placeholder="Alergias:" value="" autocomplete="disabled" ></textarea>
+            </mat-form-field>  
+          </div>       
+          <div class="section-form-container">
+              <h4>Cuestionario Medico</h4> 
+              <mat-checkbox>¿Esta usted bajo tratamiento médico?</mat-checkbox>
+              <mat-form-field style="width: 100%;">
+                  <input matInput placeholder="¿Cual?" value="" autocomplete="disabled" >
+              </mat-form-field>
+              <mat-checkbox>¿Esta tomando aspirina?</mat-checkbox><br>
+              <mat-checkbox>¿Ha recibido alguna transfución sanguinea?</mat-checkbox><br>
+              <mat-checkbox>¿Ha consumido o consume drogas?</mat-checkbox><br>
+              <mat-checkbox>¿Tuvo alguna reacción a la anestecia local?</mat-checkbox><br>
+              <mat-checkbox>¿Está usted embarazada?</mat-checkbox>  
+              <mat-form-field style="width: 10%;">
+                  <input type="number" matInput placeholder="Meses" value="" autocomplete="disabled" >
+              </mat-form-field><br>
+              <mat-checkbox>Sangre excesivamente al cortarse</mat-checkbox><br>
+              <mat-checkbox>Problemas de coagulación</mat-checkbox><br>
+              <mat-checkbox>Anemía, leucemia, hemofília, deficiencia de vitamina K</mat-checkbox><br>
+              <mat-checkbox>Alcoholismo, tabaquismo</mat-checkbox><br>
+              <mat-checkbox>Problemas del corazón, riñones o hígado</mat-checkbox><br>
+              <mat-checkbox>Osteoporosis</mat-checkbox><br>
+              <mat-checkbox>Enfermedades venéreas: Sífilis, gonorrea, SIDA</mat-checkbox><br>
+              <mat-checkbox>Cancer</mat-checkbox><br>
+              <mat-checkbox>Hepatítis</mat-checkbox><br>
+              <mat-checkbox>Fiebre reumática</mat-checkbox><br>
+              <mat-checkbox>Asma</mat-checkbox><br>
+              <mat-checkbox>Diabetes</mat-checkbox><br>
+              <mat-checkbox>Ulcera gástrica</mat-checkbox><br>
+              <mat-checkbox>Tiroides</mat-checkbox><br>
+              <mat-checkbox>Epilepsia</mat-checkbox><br>
+              <mat-checkbox>Tuberculosis</mat-checkbox><br>
+              <mat-checkbox>Taquicardia</mat-checkbox><br>
+              <mat-checkbox>Alta presión</mat-checkbox><br>
+              <mat-checkbox>Baja presión</mat-checkbox><br>
+              <mat-form-field style="width: 100%;">
+                  <textarea matInput placeholder="Observaciones:"></textarea>
+              </mat-form-field> 
+              <br><br>
+          </div>   
+      </form>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button (click)="closeForm()">Cancelar</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="" cdkFocusInitial>Guardar</button>
+  </mat-dialog-actions>
