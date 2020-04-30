@@ -2,91 +2,94 @@
     <div class="dialog-body">
       <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()"  class="example-form" > 
           <div class="header-form">
-            <h3 mat-dialog-title>Creación de Historia Clínica</h3><label class="required-tip-form">Campos Obligatorios(*).</label>
+            <h2 mat-dialog-title>{{appComponentText[this.setting.lang].clinicHistoryForm.titles.title1}}</h2><label class="required-tip-form">{{appComponentText[this.setting.lang].clinicHistoryForm.titles.title2}}</label>
           </div>
           <div class="section-form-container">
-            <h4>Datos Generales</h4>  
+            <h4>{{appComponentText[this.setting.lang].clinicHistoryForm.general.title}}</h4>  
             <br>
             <div>               
               <mat-form-field>
                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                   <mat-datepicker #picker></mat-datepicker>
-                <input matInput [matDatepicker]="picker" placeholder="Fecha" formControlName="date">                 
+                <input matInput [matDatepicker]="picker" placeholder="{{appComponentText[this.setting.lang].clinicHistoryForm.general.date}}" formControlName="date">                 
               </mat-form-field>               
             </div>    
             <br>        
             <br>
               <mat-form-field style="width: 30%;">
-                <input matInput placeholder="Nombre" value="" formControlName="name" autocomplete="disabled" required>
+                <input matInput placeholder="{{appComponentText[this.setting.lang].clinicHistoryForm.general.name}}" value="" formControlName="name" autocomplete="disabled" required>
               </mat-form-field>        
               <mat-form-field style="width: 15%;">
-                <input matInput placeholder="Apellido Paterno" value="" formControlName="surname" autocomplete="disabled" required>
+                <input matInput placeholder="{{appComponentText[this.setting.lang].clinicHistoryForm.general.surname}}" value="" formControlName="surname" autocomplete="disabled" required>
               </mat-form-field> 
               <mat-form-field style="width: 15%;">
-                <input matInput placeholder="Apellido Materno" value="" formControlName="surname2" autocomplete="disabled" required>
+                <input matInput placeholder="{{appComponentText[this.setting.lang].clinicHistoryForm.general.surname2}}" value="" formControlName="surname2" autocomplete="disabled" required>
               </mat-form-field>                
               <mat-form-field style="width: 7%;">
-                  <input type="number" matInput placeholder="Edad" value="" formControlName="age" autocomplete="disabled" required>
+                  <input type="number" matInput placeholder="{{appComponentText[this.setting.lang].clinicHistoryForm.general.age}}" value="" min="1" formControlName="age" autocomplete="disabled" required>
               </mat-form-field> 
               <mat-form-field style="width: 20%;">
-                  <mat-label>Sexo</mat-label>
+                  <mat-label>{{appComponentText[this.setting.lang].clinicHistoryForm.general.gender}}</mat-label>
                   <mat-select matNativeControl formControlName="gender" required>    
                     <mat-option value="n">N/A</mat-option>                  
-                    <mat-option value="m">Masculino</mat-option>
-                    <mat-option value="f">Femenino</mat-option>
+                    <mat-option value="m">{{appComponentText[this.setting.lang].clinicHistoryForm.general.male}}</mat-option>
+                    <mat-option value="f">{{appComponentText[this.setting.lang].clinicHistoryForm.general.female}}</mat-option>
                   </mat-select>
               </mat-form-field>  
               <br>
+              <mat-form-field style="width: 10%;">
+                <input matInput placeholder="{{appComponentText[this.setting.lang].clinicHistoryForm.general.surname}}" value="" formControlName="country" autocomplete="disabled" required>
+            </mat-form-field> 
+            <mat-form-field style="width: 10%;">
+              <input matInput placeholder="{{appComponentText[this.setting.lang].clinicHistoryForm.general.city}}" value="" formControlName="city" autocomplete="disabled" required>
+          </mat-form-field> 
               <mat-form-field style="width: 20%;">
-                <input matInput placeholder="Calle" value="" formControlName="street" autocomplete="disabled" required>
+                <input matInput placeholder="{{appComponentText[this.setting.lang].clinicHistoryForm.general.street}}" value="" formControlName="street" autocomplete="disabled" required>
               </mat-form-field>  
               <mat-form-field style="width: 20%;">
-                <input matInput placeholder="Colonia" value="" formControlName="avenue" autocomplete="disabled" required>
+                <input matInput placeholder="{{appComponentText[this.setting.lang].clinicHistoryForm.general.avenue}}" value="" formControlName="avenue" autocomplete="disabled" required>
               </mat-form-field>  
               <mat-form-field style="width: 10%;">
-                <input matInput placeholder="Número" value="" formControlName="number" autocomplete="disabled" required>
-              </mat-form-field>  
-              <mat-form-field style="width: 10%;">
-                  <input matInput placeholder="Ciudad" value="" formControlName="city" autocomplete="disabled" required>
+                <input type="number" matInput placeholder="{{appComponentText[this.setting.lang].clinicHistoryForm.general.number}}" value="" formControlName="number" autocomplete="disabled" required>
+              </mat-form-field>                
+              <mat-form-field style="width: 20%;">
+                  <input type="email" matInput placeholder="{{appComponentText[this.setting.lang].clinicHistoryForm.general.email}}" value="" formControlName="email" autocomplete="disabled" required>
               </mat-form-field> 
               <mat-form-field style="width: 20%;">
-                  <input type="email" matInput placeholder="Correo" value="" formControlName="email" autocomplete="disabled" required>
-              </mat-form-field> 
-              <mat-form-field style="width: 20%;">
-                  <input matInput placeholder="Teléfono" value="" formControlName="phone" autocomplete="disabled" required>
+                  <input matInput placeholder="{{appComponentText[this.setting.lang].clinicHistoryForm.general.phone}}" value="" formControlName="phone" autocomplete="disabled" required>
               </mat-form-field> 
               <br>
               <mat-form-field style="width: 60%;">
-                  <input matInput placeholder="Referencia" value="" formControlName="reference" autocomplete="disabled" required>
+                  <input matInput placeholder="{{appComponentText[this.setting.lang].clinicHistoryForm.general.reference}}" value="" formControlName="reference" autocomplete="disabled" required>
               </mat-form-field> 
               <mat-form-field style="width: 30%;">
-                  <input matInput placeholder="Ocupación" value="" formControlName="ocupation" autocomplete="disabled" required>
+                  <input matInput placeholder="{{appComponentText[this.setting.lang].clinicHistoryForm.general.ocupation}}" value="" formControlName="ocupation" autocomplete="disabled" required>
               </mat-form-field> 
           </div>         
           <br>
           <div class="section-form-container">
-              <h4>Contacto de Emergencia</h4> 
+              <h4>{{appComponentText[this.setting.lang].clinicHistoryForm.emergencyContact.title}}</h4> 
               <mat-form-field style="width: 60%;">
-                  <input matInput placeholder="Nombre" value="" formControlName="emergencyName" autocomplete="disabled" >
+                  <input matInput placeholder="{{appComponentText[this.setting.lang].clinicHistoryForm.emergencyContact.name}}" value="" formControlName="emergencyName" autocomplete="disabled" >
               </mat-form-field> 
               <mat-form-field style="width: 30%;">
-                  <input matInput placeholder="Teléfono" value="" formControlName="emergencyPhone" autocomplete="disabled" >
+                  <input matInput placeholder="{{appComponentText[this.setting.lang].clinicHistoryForm.emergencyContact.phone}}" value="" formControlName="emergencyPhone" autocomplete="disabled" >
               </mat-form-field>  
           </div>       
           <br>
           <div class="section-form-container">
-            <h4>Antecedentes Personales y Heredofamiliares</h4> 
+            <h4>{{appComponentText[this.setting.lang].clinicHistoryForm.background.title}}</h4> 
             <mat-form-field style="width: 100%;">
-              <textarea matInput formControlName="familyGeneticDisease" placeholder="Enfermedades padecidas por algun miembro de su familia (cancer, problemas cardiacos, padecimientos mentales o algún otro):"></textarea>
+              <textarea matInput formControlName="familyGeneticDisease" placeholder="{{appComponentText[this.setting.lang].clinicHistoryForm.background.motive}}"></textarea>
             </mat-form-field> 
             <mat-form-field style="width: 100%;">
-              <textarea matInput placeholder="Motivo de consulta:" value="" formControlName="motive" autocomplete="disabled" ></textarea>
+              <textarea matInput placeholder="{{appComponentText[this.setting.lang].clinicHistoryForm.background.motive}}" value="" formControlName="motive" autocomplete="disabled" ></textarea>
             </mat-form-field>  
             <mat-form-field style="width: 100%;">
-              <textarea matInput placeholder="Enfermedad padecida:" value="" formControlName="disease" autocomplete="disabled" ></textarea>
+              <textarea matInput placeholder="{{appComponentText[this.setting.lang].clinicHistoryForm.background.illness}}" value="" formControlName="disease" autocomplete="disabled" ></textarea>
             </mat-form-field>  
             <mat-form-field style="width: 100%;">
-              <textarea matInput placeholder="Alergias:" value="" formControlName="allergies" autocomplete="disabled" ></textarea>
+              <textarea matInput placeholder="{{appComponentText[this.setting.lang].clinicHistoryForm.background.allergies}}" value="" formControlName="allergies" autocomplete="disabled" ></textarea>
             </mat-form-field>  
           </div>       
           <div class="section-form-container">
@@ -132,6 +135,6 @@
     </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-    <button mat-button (click)="closeForm()">Cancelar</button>
+    <button mat-button (click)="closeForm(false)">Cancelar</button>
     <button mat-raised-button  color="primary" (click)="triggerSubmitButton()" >Guardar</button>
 </mat-dialog-actions>

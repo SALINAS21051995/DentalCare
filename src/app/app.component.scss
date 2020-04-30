@@ -16,3 +16,19 @@
     color: white;
     cursor: pointer;
 }
+
+.lang-input{
+    position: absolute;
+    bottom: 0px;
+    right: 5px;
+    color: white;
+    .selected {
+        text-decoration: underline;
+    }
+}
+#lang-div{
+    a:hover{
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}

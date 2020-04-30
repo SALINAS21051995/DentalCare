@@ -1,27 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material'
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog, MatDialogRef, MatPaginator} from '@angular/material';
 import { AddHistoryComponent } from './dialogs/add-history/add-history.component';
+import { GeneralDataService } from './services/general-data/general-data.service';
+import { messageNotification, statusMessages, textAppComponent } from 'src/environments/environment';
+import { SettingsService } from './services/settings/settings.service';
 
-export interface PeriodicElement {
+export interface PatientData {
+  count: Number;
   name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+  number: string;
+  age: Number;
+  id: Number;
 }
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
 
 @Component({
   selector: 'app-root',
@@ -30,25 +21,60 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 
 export class AppComponent {
-  title = 'app';
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-  constructor(public dialog: MatDialog){
+  public appComponentText: any;
+  public patientData: any = [];
+  public title = 'app';
+  public displayedColumns: string[] = ['number', 'name', 'phone', 'age'];
+  public dataSource;
+  public hasData = false;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
+  constructor(public dialog: MatDialog, private dataService: GeneralDataService, public setting: SettingsService){
+    this.appComponentText = textAppComponent;
+    this.updatePatients();
+    //checkForLang();
   }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  public openRegisterDialog(){
+  public openRegisterDialog(): void{
     const dialogRef = this.dialog.open(AddHistoryComponent, {
       height: '100%',
       width: '80%',
-      /*data: {name: this.name, animal: this.animal}*/
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      if(result)
+        this.updatePatients()
     });
+  }
+
+  public updatePatients(): void{
+    this.dataService.getTodaysPatients().subscribe(response => {
+      if(response.status == "success"){
+        this.hasData = (response.data.length == 0 ? false: true)
+        this.dataSource = new MatTableDataSource(response.data);
+        this.dataSource.paginator = this.paginator;
+      }else{
+        messageNotification.fire('', this.getNotificacionMessage(response), response.status);
+      }
+    })
+  }
+
+  public getNotificacionMessage(msg: any) : string{
+    switch(msg.status){
+      case 'success':
+      return  statusMessages[this.setting.lang].succes[msg.msg];
+      case  'error':
+      return statusMessages[this.setting.lang].error[msg.msg];
+      case 'warning':
+      return  statusMessages[this.setting.lang].warning[msg.msg];
+    }
+  }
+
+  public setLanguage(lang: string): void{
+    this.setting.setCookie("lang", lang);    
+    //location.reload();
   }
 }
